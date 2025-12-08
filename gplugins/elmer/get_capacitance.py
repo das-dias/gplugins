@@ -209,7 +209,7 @@ def run_capacitive_simulation_elmer(
     if material_spec is None:
         material_spec: RFMaterialSpec = {
             "si": {"relative_permittivity": 11.45},
-            "sio2": {"relative_permittivity": 1},
+            "sio2": {"relative_permittivity": 3.8}, # most common inter-layer dielectric in CMOS PDKs
             "vacuum": {"relative_permittivity": 1},
         }
 
@@ -224,7 +224,6 @@ def run_capacitive_simulation_elmer(
     else:
         prisms = get_meshwell_prisms(
             component=component,
-            type="3D",
             filename=simulation_folder / filename,
             layer_stack=layer_stack,
             n_threads=n_processes,
